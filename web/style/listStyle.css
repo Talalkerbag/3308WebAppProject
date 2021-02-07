@@ -1,0 +1,55 @@
+/* Style the HTML table that shows the tabular database data */
+
+table {
+    margin:auto;     /* auto makes left and right margins the same, means centered */
+    margin-top: 1em; /* em means size of capital M */
+}
+
+td {
+    padding: 4px;
+    background-color: #DDEEEE;
+    font-size:13px;
+}
+
+thead td {  /* style of td elements that are inside of a thead element */
+    background-color: #AABBCC;
+    font-weight: bold;
+    font-size:16px;
+}
+
+#dataList h2 {
+    text-align: center;
+}
+
+#dataList h2 img {
+    margin-bottom: -4px;
+    height: auto; 
+    width: auto; 
+    max-width: 25px; 
+    max-height: 25px;
+}
+
+#dataList img {
+    margin-bottom: -4px;
+    height: auto; 
+    width: auto; 
+    max-width: 25px; 
+    max-height: 25px;
+}
+
+#dataList table {
+    margin:auto;     /* margin:auto makes left and right margins the same, centers the table */
+}
+
+#dataList td {
+    padding: 4px;
+    background-color: #DDEEEE;
+    font-size:13px;
+}
+
+#dataList thead td {  /* style of td elements that are inside of a thead element (column headings)) */
+    background-color: #AABBCC;
+    font-weight: bold;
+    font-size:16px;
+    padding-top:10px;
+}

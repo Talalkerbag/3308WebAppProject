@@ -1,0 +1,21 @@
+
+<html>
+    <head>
+        <title>Log on</title>
+        <!-- This is how you link to an external style sheet. -->
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/listStyle.css" rel="stylesheet" type="text/css" /> 
+    </head>
+    Email Address:    
+    <input type="text" id="emailAddressId" />
+    <br/><br/>
+    Password:
+    <input type="password" id="passwordId"/>
+    <br/><br/>
+    <button onclick="logonFn('emailAddressId', 'passwordId', 'logonMsgId')">Log On</button>
+    <br/><br/>
+    <div  id="logonMsgId"></div>
+    
+    <script src="js/logon.js"></script>
+
+</html>

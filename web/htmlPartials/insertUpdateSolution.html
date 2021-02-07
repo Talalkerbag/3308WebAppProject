@@ -1,0 +1,51 @@
+
+<div id="insertArea">
+
+    <table>
+        <tr id='solutionIdRow'>
+            <td>Solution ID</td>
+            <td><input type="text"  id="solutionId" disabled="disabled"/></td>
+            <td ></td> 
+        </tr>
+        <tr>
+            <td>Web User ID</td>  
+            <td>
+                <select id="rolePickList1">
+                    <!-- JS code will make ajax call to get all the roles 
+                    then populate this select tag's options with those roles -->
+                </select>
+            </td>
+
+            <td id="userRoleIdError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Problem ID</td>  
+            <td>
+                <select id="rolePickList2">
+                    <!-- JS code will make ajax call to get all the roles 
+                    then populate this select tag's options with those roles -->
+                </select>
+            </td>
+
+            <td id="userRoleIdError" class="error"></td>
+        </tr>
+        <tr>
+            <td>image URL</td>
+            <td><input type="text"  id="imageurl" /></td>
+            <td id="imageUrlError" class="error"></td> 
+        </tr>
+        <tr>
+            <td>Viewer Rating</td>
+            <td><input type="text"  id="viewerrating" /></td>
+            <td id="viewerRatingError" class="error"></td>
+        </tr>
+        <tr>
+            <td>
+                <button id="insertSaveSolutionButton" onclick="solutionCRUD.insertSave()">Insert Save</button>
+                <button id="updateSaveSolutionButton" onclick="solutionCRUD.updateSave()">Update Save</button>
+            </td>
+            <td id="recordError" class="error"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

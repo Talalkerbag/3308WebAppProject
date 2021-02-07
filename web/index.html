@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>[ITILKEDB]</title>
+
+        <!-- This is how you link to an external style sheet. -->
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/listStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/insertStyle.css" rel="stylesheet" type="text/css" /> 
+
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <!-- The style sheet has pageTitle floated left -->
+            <div id="pageTitle">
+                ITIL Known Error Database
+            </div>
+
+            <!-- The style sheet has nav floated right -->
+            <div id="nav">
+
+                <div><a class="menu" onclick = " ajaxCall('htmlPartials/homeContent.html', setContent, setError)">Home</a></div>
+                <div><a class="menu" onclick = " ajaxCall('htmlPartials/blogContent.html', setContent, setError)">Blog</a></div>
+                <div class="menu" onclick="toggleSubMenu(this)">
+                    <div style="padding-bottom:18px;">Data</div>
+                    <div class="submenu">
+                        <a onclick = "userCRUD.list()">Users</a><br/>
+                        <a onclick = "problemCRUD.list()">Problems</a><br/>    
+                        <a onclick = "solutionCRUD.list()">Solutions</a><br/> 
+                    </div>
+                </div>
+                <div class="menu" onclick="toggleSubMenu(this)">
+                    <div style="padding-bottom:18px; font-size:20px;">Account</div>
+                    <div class="submenu">
+                        <a onclick = " ajaxCall('htmlPartials/logoncontent.html', setContent, setError)">Log On</a><br/>
+                        <a onclick = " ajaxCall('webAPIs/logOffAPI.jsp', setContent, setError)">Log Off</a><br/>    
+                        <a onclick = " ajaxCall('webAPIs/getProfileAPI.jsp', setUserContent, setError)">Profile</a> 
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Must stop the floating so that elements below (e.g., content) 
+            don't float up into here. -->
+            <div class="stopFloat"></div>
+        </div>
+
+        <div id="content">
+
+        </div> <!-- content. [[Keep track of nesting]] -->
+
+        <div id="footer">
+            Talal Kerbag
+        </div>
+
+        <!-- It is as if the code from this javascript file was copy/pasted here. -->
+        <script src="js/ajaxUtilities.js"></script>
+        <script src="js/ajax.js"></script>
+        <script src="js/buildTable.js"></script>
+        <script src="js/logon.js"></script>
+        <script src="js/makePickList.js"></script>
+        <script src="js/makePickList2.js"></script>
+        <script src="js/userCRUD.js"></script>
+        <script src="js/solutionCRUD.js"></script>
+        <script src="js/problemCRUD.js"></script>
+
+        <script>
+
+
+                            // Make sure initial page load has home content displayed. 
+                            ajaxCall('htmlPartials/homeContent.html', setContent, setError)
+
+                            // Place the contents of the file url into the 
+                            // innerHTML property of the HTML element with id "content". 
+                            function setContent(httpRequest) {
+                                console.log("Ajax call was successful.");
+                                document.getElementById("content").innerHTML = httpRequest.responseText;
+                            }
+
+                            function setUserContent(httpRequest) {
+
+                                console.log("listUsersResponse - here is the value of httpRequest object (next line)");
+                                console.log(httpRequest);
+                                var obj = JSON.parse(httpRequest.responseText);
+                                if (obj === null) {
+                                    target.innerHTML = "listUsersResponse Error: JSON string evaluated to null.";
+                                    return;
+                                }
+
+                                // buildTable Parameters: 
+// First:  array of objects that are to be built into an HTML table.
+                                // Second: string that is database error (if any) or empty string if all OK.
+                                // Third:  reference to DOM object where built table is to be stored. 
+                                var target = document.getElementById("content");
+                                target.innerHTML = "<br/>"; // clear out old content and add new line spacing
+                                buildTable(obj.webUserList, obj.dbError, target);
+
+                            } // end of processResponse
+
+                            function setProblemContent(httpRequest) {
+
+                                console.log("listUsersResponse - here is the value of httpRequest object (next line)");
+                                console.log(httpRequest);
+                                var obj = JSON.parse(httpRequest.responseText);
+                                if (obj === null) {
+                                    target.innerHTML = "listUsersResponse Error: JSON string evaluated to null.";
+                                    return;
+                                }
+
+                                // buildTable Parameters: 
+// First:  array of objects that are to be built into an HTML table.
+                                // Second: string that is database error (if any) or empty string if all OK.
+                                // Third:  reference to DOM object where built table is to be stored. 
+                                var target = document.getElementById("content");
+                                target.innerHTML = "<br/>"; // clear out old content and add new line spacing
+                                buildTable(obj.problemList, obj.dbError, target);
+
+                            }
+
+                            function setSolutionContent(httpRequest) {
+
+                                console.log("listUsersResponse - here is the value of httpRequest object (next line)");
+                                console.log(httpRequest);
+                                var obj = JSON.parse(httpRequest.responseText);
+                                if (obj === null) {
+                                    target.innerHTML = "listUsersResponse Error: JSON string evaluated to null.";
+                                    return;
+                                }
+
+                                // buildTable Parameters: 
+// First:  array of objects that are to be built into an HTML table.
+                                // Second: string that is database error (if any) or empty string if all OK.
+                                // Third:  reference to DOM object where built table is to be stored. 
+                                var target = document.getElementById("content");
+                                target.innerHTML = "<br/>"; // clear out old content and add new line spacing
+                                buildTable(obj.solutionList, obj.dbError, target);
+
+                            }
+
+                            function setError(httpRequest) {
+                                console.log("Ajax call was NOT successful.");
+                                console.log(httpRequest);
+                                document.getElementById("content").innerHTML = httpRequest.errorMsg;
+                            }
+                            ;
+
+                            function toggleSubMenu(ele) {
+                                console.log("current element is " + ele.innerHTML);
+                                var subs = ele.getElementsByClassName("submenu");
+                                if (subs.length > 0) {
+                                    var submenu = subs[0]; // get first submenu
+                                    console.log("submenu is " + submenu.innerHTML);
+                                    if (submenu.style.display === "block") {
+                                        submenu.style.display = "none";
+                                    } else {
+                                        submenu.style.display = "block";
+                                    }
+                                } else {
+                                    console.log("this element does not have any children with class 'submenu'. ");
+                                }
+                            }
+
+                            function menuToggle(ele) {
+                                var children = ele.getElementsByClassName("subMenu");
+                                console.log(children);
+
+                                var child = children[0];
+
+                                // Tip: JS doesnt understand the initial CSS values (the values 
+                                // set by style sheet instead of by JS), unless you use a function that is 
+                                // something like "getComputedStyle". But you can avoid this by having the 
+                                // if condition test for the way CSS does NOT have it initially set. 
+                                // (In other words, do not reverse the order of the if/else block.)                      
+                                if (child.style.display === "block") {
+                                    child.style.display = "none";
+                                } else {
+                                    child.style.display = "block";
+                                }
+                            }
+
+        </script>
+
+    </body>
+</html>

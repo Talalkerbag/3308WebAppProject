@@ -1,0 +1,169 @@
+/* This CSS file is called an external style sheet. Link to it from 
+your HTML pages. */
+
+/*  Use ONLY this type of comment inside a style sheet. Other types 
+  (like double slash) do not work. */
+
+html, body {
+    margin:0; /* don't want tiny white border inside browser window */
+    padding:0; /* don't want tiny white border inside browser window */
+    min-width: 960px;
+
+}
+
+body {
+    height:100%; /* so we can make the container div be 100% as high as the browser window, even when there is little content) */
+    margin:0;    /* avoid tiny white border inside browser window */
+    padding:0;   /* avoid tiny white border inside browser window */
+    font-family: Verdana, Geneva, sans-serif;
+    background-color: rgb(125,182, 255);
+    font-size:17px;
+}
+
+#container {
+
+}
+
+#titleNav {
+    z-index:2;       /* added for fixed layout: keeps titleNav on top of other elemements */
+    position:fixed; /* added for fixed layout */
+    top:0px;        /* added for fixed layout */
+    left:0px;       /* added for fixed layout */
+    width:100%;     /* added for fixed layout */
+
+    font-family: serif;
+    color:white;
+    background-color:rgb(64,64,64);
+    height: 79px;
+    min-width: 600px;  /* prevents nav links from wrapping when browser window is too narrow */
+}
+#pageTitle {
+    padding-top:10px;
+    padding-left:10px;
+    color:white;
+    font-size:45px;
+    font-weight:bold;
+    letter-spacing: 1.5px;
+    text-align:center;
+    float:left;
+}
+#nav {
+    font-size:22px;
+    letter-spacing: 1px;
+    font-weight:bold;
+    float:right;
+    text-align:center;
+    /*padding-top:5px;*/
+    margin-right: 10px;;
+}
+
+#nav div {
+    float:left;
+    color: lightcoral;
+   
+}
+
+/* When the user hover's over a div that's inside of and element with 
+   id="nav", this styling will kick in. */
+#nav div:hover {
+    background-color: white; /* this is the turqoise color */
+}
+
+/* When the user hovers over a div that's inside of an element with 
+   id="nav", the text of links inside the div will change color. */
+#nav div:hover a {
+    color: black;
+    
+}
+.menu {  /* this is a floated left div that will hold one nav link */
+    width: 75px;
+    float:left;
+    text-align:center; 
+    padding: 6px;
+    padding-top:30px;
+    margin-left:2px;
+    margin-right:2px;
+    
+
+    /*border: 2px solid red; /* for debugging */
+}
+.menu {
+    margin-bottom:18px;
+}
+.menu a {
+    text-decoration:none;
+}
+.menu a:link, .menu{
+    color: white;
+}
+
+.menu a:visited {
+    color:#CCCCCC;
+}
+.menu:hover {
+    background-color:white;
+}
+
+.menu:hover a:link, .menu:hover {
+    color:black;
+}
+.menu:hover a:visited {
+    color:black;
+}
+
+.menu .submenu {
+    padding-top: .5em;
+    font-size:14px;
+    line-height:22px;
+    display:none;
+    /* border:2px solid green; /* for debugging */
+}
+
+
+.stopFloat {
+    clear:both;
+}
+#content {
+    margin-top: 79px;    /* added for fixed layout: prevent content from being hidden under titleNav */
+    margin-bottom: 35px; /* added for fixed layout: prevent content from being hidden under footer */
+    padding:10px;
+}
+
+#footer {
+    z-index:2;       /* added for fixed layout: keeps footer on top of other elemements */
+    width: 100%;     /* added for fixed layout */
+    position:fixed;  /* added for fixed layout */
+    bottom:0px;      /* added for fixed layout */
+    left:0px;        /* added for fixed layout */
+
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:10px;
+    font-size:15px;
+    letter-spacing:0.75px;
+    background-color:rgb(64,64,64,.5);
+}
+
+.width33Pct { /* right column in my layout */
+    /* border: thin solid red; Use a rule like this to see where a div is to debug. */
+    padding-top: 22px;
+    padding: 1%;
+    width:33.3%;
+    float:left;
+    box-sizing: border-box;
+    mid-width: 400px;
+}
+
+.width66Pct { /* left column in my layout */
+    padding: 1%;
+    width:66.6%;
+    float:left;
+    box-sizing: border-box;
+}
+
+img {
+    width:100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}

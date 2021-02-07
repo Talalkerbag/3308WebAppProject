@@ -1,0 +1,40 @@
+
+
+<div id="insertArea">
+
+    <table>
+         <tr id='problemIdRow'>
+            <td>Problem Id</td>
+            <td><input type="text"  id="problemId" disabled="disabled"/></td>
+            <td ></td> 
+        </tr>
+        <tr>
+            <td>Title*</td>
+            <td><input type="text" id="title" /></td>
+            <td id="titleError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Description*</td>
+            <td><textarea rows="4" cols="50" name="comment" form="usrform" id="description"></textarea></td>
+            <td id="descriptionError" class="error"></td>
+        </tr>
+        <tr>
+            <td>Solution</td>
+            <td><textarea rows="4" cols="50" name="comment" form="usrform" id="solution"></textarea></td>
+            <td id="solutionError" class="error"></td> 
+        </tr>
+        <tr>
+            <td>Date Discovered</td>
+            <td><input type="text" id="dateDiscovered" /></td>
+            <td id="dateDiscoveredError" class="error"></td> 
+        </tr>
+        <tr>
+            <td>
+                <button id="insertSaveProblemButton" onclick="problemCRUD.insertSave()">Insert Save</button>
+                <button id="updateSaveProblemButton" onclick="problemCRUD.updateSave()">Update Save</button>
+            </td>
+            <td id="recordError" class="error"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
